@@ -1,194 +1,393 @@
-<!DOCTYPE html>
-<html>
+```html
+<!doctype html>
+<html lang="es">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Práctica de Listas e Hipervínculossss</title>
+    <title>Biblioteca Las Cumbres</title>
 
-<meta charset="UTF-8">
-
+    <link rel="stylesheet" href="./estilos.css">
 </head>
 
-<body bgcolor="pink">
+<body>
 
-<!-- INICIO -->
-<a id="inicio"></a>
+    <header class="encabezado">
 
-<center>
+        <details class="menu">
 
-<h2>Practica de Listas e Hipervínculos</h2>
+            <summary aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </summary>
 
-</center>
+            <nav class="menu-desplegable">
 
-<!-- HIPERVÍNCULOS DEL PRINCIPIO -->
+                <a href="./novedades.html">Novedades</a>
 
-<a href="#medio">Ir al medio</a>
+                <a href="./autores.html">Autores</a>
 
-<br><br>
+                <a href="./adaptaciones.html">Adaptaciones</a>
 
-<a href="#final">Ir al final</a>
+                <a href="./ediciones.html">Ediciones especiales</a>
 
-<hr>
+                <a href="./audiolibros.html">Audiolibros</a>
 
-<!-- EJERCICIO 1 -->
+                <a href="./generos.html">Géneros</a>
 
-<h2>Paises que quiero visitar</h2>
+                <a href="./ubicacion.html">Ubicación</a>
 
-<ol>
+                <a href="./ayuda.html">Ayuda</a>
 
-<li>Reino Unido</li>
-<li>Paises Bajos</li>
-<li>Estados Unidos</li>
-<li>Suiza</li>
-<li>Italia</li>
+            </nav>
 
-</ol>
+        </details>
 
-<!-- EJERCICIO 2 -->
 
-<h2>Paises en orden inverso</h2>
+        <a class="perfil"
+           href="./login.html"
+           aria-label="Iniciar sesión">
+            ◉
+        </a>
 
-<ol reversed>
+    </header>
 
-<li>Reino Unido</li>
-<li>Paises Bajos</li>
-<li>Estados Unidos</li>
-<li>Suiza</li>
-<li>Italia</li>
 
-</ol>
+    <main>
 
-<!-- EJERCICIO 3 -->
 
-<h2>Comidas favoritas</h2>
+        <section class="buscador-principal">
 
-<ol type="A">
+            <div class="busqueda">
 
-<li>Torre de panqueques</li>
-<li>Guiso de lentejas</li>
-<li>Panchos</li>
-<li>Canelones</li>
-<li>Pizza</li>
+                <input
+                    type="search"
+                    placeholder="Buscar libros, autores..."
+                    aria-label="Buscar libros o autores">
 
-</ol>
+                <a
+                    class="lupa"
+                    href="./sin-resultados.html"
+                    aria-label="Buscar">
+                    ⌕
+                </a>
 
-<!-- EJERCICIO 4 -->
+            </div>
 
-<h2>Comidas favoritas con números romanos</h2>
 
-<ol type="I">
+            <div class="busqueda-vacia">
 
-<li>Torre de panqueques</li>
-<li>Guiso de lentejas</li>
-<li>Panchos</li>
-<li>Canelones</li>
-<li>Pizza</li>
+                <h1>
+                    Todo un mundo por descubrir
+                </h1>
 
-</ol>
+                <p>
+                    Buscá un libro y encontrá tu próxima historia favorita.
+                </p>
 
-<!-- MEDIO -->
+            </div>
 
-<a id="medio"></a>
+        </section>
 
-<hr>
 
-<!-- EJERCICIO 5 -->
 
-<h2>Peliculas favoritas</h2>
+        <section class="secciones">
 
-<ul type="square">
 
-<li>Una esposa de mentira</li>
-<li>Si tuviera 30</li>
-<li>Mientras dormías</li>
-<li>Enredados</li>
-<li>Valentina</li>
+            <!-- FORMATOS -->
 
-</ul>
+            <div class="bloque formato">
 
-<!-- EJERCICIO 6 -->
+                <h2>Formatos</h2>
 
-<h2>Peliculas favoritas con círculos</h2>
+                <div class="formatos">
 
-<ul type="circle">
 
-<li>Una esposa de mentira</li>
-<li>Si tuviera 30</li>
-<li>Mientras dormías</li>
-<li>Enredados</li>
-<li>Valentina</li>
+                    <article>
 
-</ul>
+                        <div class="libro-vacio">
+                            ▥
+                        </div>
 
-<!-- EJERCICIO 7 -->
+                        <h3>
+                            Físico
+                        </h3>
 
-<h2>Ciudades que quiero visitar</h2>
+                    </article>
 
-<ul>
 
-<li>Reino Unido</li>
+                    <article>
 
-<ul type="square">
+                        <div class="libro-vacio">
+                            ▥
+                        </div>
 
-<li>Londres</li>
-<li>Edimburgo</li>
+                        <h3>
+                            Digital
+                        </h3>
 
-</ul>
+                    </article>
 
-<li>Paises Bajos</li>
 
-<ul type="square">
+                    <article>
 
-<li>Amsterdam</li>
+                        <div class="libro-vacio">
+                            ▥
+                        </div>
 
-</ul>
+                        <h3>
+                            Audiolibro
+                        </h3>
 
-<li>Estados Unidos</li>
+                    </article>
 
-<ul type="square">
 
-<li>Nueva York</li>
+                </div>
 
-</ul>
+            </div>
 
-<li>Italia</li>
 
-<ul type="square">
 
-<li>Roma</li>
+            <!-- SEGUIR LEYENDO -->
 
-</ul>
+            <div class="bloque">
 
-<li>Francia</li>
+                <h2>
+                    Seguir leyendo
+                </h2>
 
-<ul type="square">
 
-<li>Paris</li>
+                <article class="libro-card">
 
-</ul>
+                    <img
+                        src="./assets/IMG-20260505-WA0008.jpg"
+                        alt="Harry Potter">
 
-<li>Austria</li>
+                    <h3>
+                        Harry Potter
+                    </h3>
 
-<ul type="square">
 
-<li>Viena</li>
+                    <div class="progreso">
 
-</ul>
+                        <span style="width: 62%;"></span>
 
-</ul>
+                    </div>
 
-<!-- FINAL -->
 
-<a id="final"></a>
+                    <p>
+                        62% leído
+                    </p>
 
-<hr>
+                </article>
 
-<center>
+            </div>
 
-<a href="#inicio">Ir al inicio</a>
 
-</center>
+
+            <!-- SEGUIR ESCUCHANDO -->
+
+            <div class="bloque">
+
+                <h2>
+                    Seguir escuchando
+                </h2>
+
+
+                <article class="libro-card">
+
+                    <img
+                        src="./assets/IMG-20260505-WA0007.jpg"
+                        alt="La casa de las sombras">
+
+                    <h3>
+                        La casa de las sombras
+                    </h3>
+
+
+                    <div class="progreso">
+
+                        <span style="width: 70%;"></span>
+
+                    </div>
+
+
+                    <p>
+                        70% escuchado
+                    </p>
+
+                </article>
+
+            </div>
+
+
+
+            <!-- LOS MÁS ELEGIDOS -->
+
+            <div class="bloque mas-leidos">
+
+                <h2>
+                    Los más elegidos
+                </h2>
+
+
+                <div class="libros-fila">
+
+
+                    <article class="mini-libro">
+
+                        <img
+                            src="./assets/IMG-20260505-WA0001.jpg"
+                            alt="El Principito">
+
+                        <h3>
+                            El Principito
+                        </h3>
+
+                    </article>
+
+
+
+                    <article class="mini-libro">
+
+                        <img
+                            src="./assets/IMG-20260505-WA0010.jpg"
+                            alt="La felicidad">
+
+                        <h3>
+                            La felicidad
+                        </h3>
+
+                    </article>
+
+
+
+                    <article class="mini-libro">
+
+                        <img
+                            src="./assets/IMG-20260505-WA0011.jpg"
+                            alt="Don Quijote">
+
+                        <h3>
+                            Don Quijote
+                        </h3>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- SECCIONES DEL SITIO -->
+
+
+        <section class="info">
+
+            <h2>
+                Adaptaciones
+            </h2>
+
+            <p>
+                Descubrí historias que también llegaron al cine y a las series.
+            </p>
+
+            <br>
+
+            <a href="./adaptaciones.html">
+                Ver adaptaciones →
+            </a>
+
+        </section>
+
+
+
+        <section class="info">
+
+            <h2>
+                Ediciones especiales
+            </h2>
+
+            <p>
+                Encontrá ediciones únicas para ampliar tu colección.
+            </p>
+
+            <br>
+
+            <a href="./ediciones.html">
+                Ver ediciones →
+            </a>
+
+        </section>
+
+
+
+        <section class="info">
+
+            <h2>
+                Ubicación
+            </h2>
+
+            <p>
+                Biblioteca Las Cumbres · Un espacio para leer,
+                escuchar y descubrir.
+            </p>
+
+            <br>
+
+            <a href="./ubicacion.html">
+                Ver ubicación →
+            </a>
+
+        </section>
+
+
+
+        <section class="info">
+
+            <h2>
+                Ayuda
+            </h2>
+
+            <p>
+                ¿Necesitás ayuda?
+                Encontrá respuestas a las preguntas más frecuentes.
+            </p>
+
+            <br>
+
+            <a href="./ayuda.html">
+                Ir a ayuda →
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+
+    <footer>
+
+        <img
+            src="./assets/Biblioteca Las Cumbres (1).png"
+            alt="Logo Biblioteca Las Cumbres">
+
+        <p>
+            Biblioteca Las Cumbres
+        </p>
+
+    </footer>
+
 
 </body>
 
 </html>
+```
