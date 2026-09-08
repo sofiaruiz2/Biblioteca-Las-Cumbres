@@ -16,7 +16,7 @@
     }
 
     body {
-      background-color: #fcfcfc;
+      background-color: #f4f6f8;
       color: #1c1c1c;
       display: flex;
       justify-content: center;
@@ -28,10 +28,11 @@
       max-width: 1100px;
       background: #ffffff;
       min-height: 100vh;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
       position: relative;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
 
     .view {
@@ -45,11 +46,11 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Componente de Logo */
+    /* Logo Componente */
     .logo-container {
       text-align: center;
       margin-bottom: 20px;
@@ -81,14 +82,15 @@
     }
 
     .logo-title {
-      font-size: 14px;
+      font-size: 13px;
       font-family: serif;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       margin-top: 10px;
       z-index: 1;
+      text-transform: uppercase;
     }
 
-    /* Input Estilo 'Pill' (Redondeado) */
+    /* Inputs y Botones Estilo Pill */
     .input-pill {
       width: 100%;
       padding: 12px 20px;
@@ -108,20 +110,160 @@
       font-size: 16px;
       background: #fff;
       cursor: pointer;
-      transition: background 0.2s;
-      font-weight: 500;
+      transition: all 0.2s;
+      font-weight: 600;
     }
 
     .btn-pill:hover {
-      background: #f0f0f0;
+      background: #1c1c1c;
+      color: #fff;
     }
 
     /* ==========================================
-       2. PANTALLA: LOGIN (VISTA 1)
+       2. MENÚ DESPLEGABLE (DRAWER MENU)
+       ========================================== */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100vh;
+      background: #ffffff;
+      z-index: 100;
+      box-shadow: 4px 0 15px rgba(0,0,0,0.15);
+      transition: left 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      padding: 25px 20px;
+    }
+
+    .side-menu.active {
+      left: 0;
+    }
+
+    .side-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .close-menu-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .menu-items-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .menu-items-list li button {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #333;
+      transition: background 0.2s;
+    }
+
+    .menu-items-list li button:hover {
+      background: #f0f3f6;
+      color: #000;
+      font-weight: 600;
+    }
+
+    /* ==========================================
+       3. HEADER COMÚN
+       ========================================== */
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .icon-btn:hover {
+      background: #eee;
+    }
+
+    .search-bar {
+      flex: 1;
+      position: relative;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 9px 15px 9px 38px;
+      border: 1.5px solid #333;
+      border-radius: 20px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .search-bar .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 15px;
+      color: #666;
+    }
+
+    /* ==========================================
+       4. PANTALLA: LOGIN (VISTA 1)
        ========================================== */
     #login-view {
-      max-width: 450px;
-      margin: 40px auto;
+      max-width: 420px;
+      margin: 30px auto;
       text-align: center;
     }
 
@@ -131,12 +273,17 @@
       justify-content: center;
       gap: 10px;
       border: 1.5px solid #333;
+      border-radius: 25px;
       padding: 10px 20px;
       margin-bottom: 12px;
       background: #fff;
       cursor: pointer;
       font-size: 15px;
+      width: 100%;
+      transition: background 0.2s;
     }
+
+    .social-btn:hover { background: #f7f7f7; }
 
     .divider {
       display: flex;
@@ -148,7 +295,7 @@
     .divider::before, .divider::after {
       content: "";
       flex: 1;
-      border-bottom: 1.5px solid #333;
+      border-bottom: 1.5px solid #ccc;
     }
 
     .divider span {
@@ -170,122 +317,89 @@
     }
 
     .login-footer {
-      margin-top: 25px;
+      margin-top: 20px;
       font-size: 13px;
       display: flex;
-      justify-content: flex-end;
-      gap: 10px;
       flex-direction: column;
       align-items: flex-end;
+      gap: 8px;
     }
 
-    .login-footer a {
-      color: #333;
-      text-decoration: none;
-    }
-
-    .login-footer a:hover {
-      text-decoration: underline;
-    }
+    .login-footer a { color: #333; text-decoration: none; }
+    .login-footer a:hover { text-decoration: underline; }
 
     /* ==========================================
-       3. HEADER COMÚN (DASHBOARD & DETALLE)
-       ========================================== */
-    .app-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .header-icons {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .icon-btn {
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    .search-bar {
-      flex: 1;
-      position: relative;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 8px 15px 8px 35px;
-      border: 1.5px solid #333;
-      font-size: 15px;
-      outline: none;
-    }
-
-    .search-bar .search-icon {
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 16px;
-    }
-
-    /* ==========================================
-       4. PANTALLA: MAIN / DASHBOARD (VISTA 2)
+       5. PANTALLA: DASHBOARD (VISTA 2)
        ========================================== */
     .dashboard-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     .section-title {
       font-size: 18px;
-      border-bottom: 1.5px solid #333;
-      padding-bottom: 5px;
+      border-bottom: 2px solid #333;
+      padding-bottom: 4px;
       margin-bottom: 15px;
       display: inline-block;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .section-title.inactive-tab {
+      border-bottom: 2px solid transparent;
+      opacity: 0.4;
+    }
+
+    .section-title.inactive-tab:hover {
+      opacity: 0.8;
     }
 
     .books-row {
       display: flex;
       gap: 15px;
       overflow-x: auto;
-      padding-bottom: 10px;
+      padding-bottom: 12px;
+      scrollbar-width: thin;
     }
 
     .book-card {
-      min-width: 90px;
+      min-width: 105px;
+      max-width: 110px;
       text-align: center;
       cursor: pointer;
       transition: transform 0.2s;
     }
 
-    .book-card:hover {
-      transform: translateY(-4px);
-    }
+    .book-card:hover { transform: translateY(-50px) scale(1.03); transform: translateY(-4px); }
 
     .book-cover {
-      width: 90px;
-      height: 130px;
-      background: #dcdde1;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      width: 105px;
+      height: 150px;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 2px 4px 8px rgba(0,0,0,0.12);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       font-size: 12px;
       font-weight: bold;
-      padding: 5px;
-      color: #2f3640;
+      padding: 8px;
+      color: #fff;
+      text-align: center;
       position: relative;
-      background-size: cover;
-      background-position: center;
+    }
+
+    .book-title-sub {
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .progress-bar-container {
@@ -306,12 +420,12 @@
     .book-formats {
       font-size: 11px;
       margin-top: 5px;
-      color: #555;
+      color: #666;
       line-height: 1.2;
     }
 
     /* ==========================================
-       5. PANTALLA: DETALLE DE LIBRO (VISTA 3)
+       6. PANTALLA: DETALLE DE LIBRO (VISTA 3)
        ========================================== */
     .detail-container {
       display: flex;
@@ -321,22 +435,22 @@
     }
 
     .detail-cover-container {
-      flex: 0 0 200px;
+      flex: 0 0 210px;
       margin: 0 auto;
     }
 
     .detail-cover {
-      width: 200px;
-      height: 290px;
-      border: 1px solid #ccc;
-      box-shadow: 4px 4px 10px rgba(0,0,0,0.15);
+      width: 210px;
+      height: 300px;
+      border-radius: 8px;
+      box-shadow: 4px 8px 16px rgba(0,0,0,0.2);
       background: #8c7ae6;
       color: white;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 15px;
+      padding: 20px;
       text-align: center;
     }
 
@@ -347,21 +461,29 @@
 
     .book-header-title {
       font-size: 26px;
-      font-weight: 500;
-      margin-bottom: 10px;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
-    .author-info {
-      display: flex;
+    .author-info-link {
+      display: inline-flex;
       align-items: center;
       gap: 10px;
       font-size: 18px;
       margin-bottom: 15px;
+      cursor: pointer;
+      color: #2c3e50;
+      transition: color 0.2s;
+    }
+
+    .author-info-link:hover {
+      color: #3498db;
+      text-decoration: underline;
     }
 
     .author-icon {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: #1c1c1c;
       color: #fff;
@@ -379,12 +501,6 @@
       align-items: center;
     }
 
-    .stat-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
     .synopsis-section {
       margin-bottom: 25px;
     }
@@ -397,15 +513,15 @@
 
     .synopsis-text {
       font-size: 15px;
-      line-height: 1.5;
-      color: #333;
+      line-height: 1.6;
+      color: #444;
     }
 
     .actions-list {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      max-width: 200px;
+      max-width: 220px;
     }
 
     .action-btn {
@@ -414,35 +530,170 @@
       gap: 10px;
       background: none;
       border: none;
-      font-size: 18px;
+      font-size: 17px;
       cursor: pointer;
       text-align: left;
-      padding: 4px 0;
+      padding: 6px 0;
+      transition: color 0.2s;
     }
 
-    .action-btn:hover {
-      color: #555;
+    .action-btn:hover { color: #000; font-weight: bold; }
+
+    /* ==========================================
+       7. PANTALLA: LECTOR DE LIBRO (VISTA 4)
+       ========================================== */
+    #reader-view {
+      background: #fff;
+      border-radius: 8px;
     }
 
-    /* Estilos responsivos para Mobile */
+    .reader-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .reader-toolbar {
+      display: flex;
+      gap: 15px;
+      background: #f8f9fa;
+      padding: 10px 15px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+
+    .reader-content {
+      font-size: 17px;
+      line-height: 1.8;
+      color: #222;
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 20px 10px;
+      text-align: justify;
+    }
+
+    .theme-white { background: #fff; color: #222; }
+    .theme-sepia { background: #fbf0d9; color: #5f4b32; }
+    .theme-dark { background: #222; color: #ddd; }
+
+    /* ==========================================
+       8. PANTALLA: PERFIL DE AUTOR (VISTA 5)
+       ========================================== */
+    .author-header-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      border: 1px solid #eee;
+    }
+
+    .author-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #34495e;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    /* ==========================================
+       9. PANTALLA: PERFIL DE USUARIO (VISTA 6)
+       ========================================== */
+    .user-profile-card {
+      text-align: center;
+      background: linear-gradient(135deg, #2c3e50, #4b6584);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+    }
+
+    .user-avatar-big {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #fff;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      margin: 0 auto 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .user-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .stat-box {
+      background: #f8f9fa;
+      border: 1px solid #e2e8f0;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .stat-box h4 {
+      font-size: 22px;
+      color: #2c3e50;
+    }
+
+    .stat-box p {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Estilos Responsivos */
     @media (max-width: 600px) {
       .detail-container {
         flex-direction: column;
         align-items: center;
       }
-      .detail-info {
-        text-align: center;
-      }
-      .author-info, .stats-row {
-        justify-content: center;
-      }
-      .actions-list {
-        margin: 0 auto;
-      }
+      .detail-info { text-align: center; }
+      .author-info-link, .stats-row { justify-content: center; }
+      .actions-list { margin: 0 auto; }
+      .author-header-card { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
+
+  <!-- MENÚ DESPLEGABLE (DRAWER) -->
+  <div class="menu-overlay" id="menu-overlay" onclick="toggleMenu(false)"></div>
+  <aside class="side-menu" id="side-menu">
+    <div class="side-menu-header">
+      <h3>Menú Biblioteca</h3>
+      <button class="close-menu-btn" onclick="toggleMenu(false)">✕</button>
+    </div>
+    <ul class="menu-items-list">
+      <li><button onclick="navigateTo('main-view')">🏠 Inicio / Catálogo</button></li>
+      <li><button onclick="navigateTo('profile-view')">👤 Mi Perfil</button></li>
+      <li><button onclick="navigateTo('profile-view')">📚 Mi Biblioteca</button></li>
+      <li><button onclick="alert('Área: Gestión de Biblioteca Física (Préstamos activos y reservas)')">📖 Libros Físicos</button></li>
+      <li><button onclick="alert('Área: Contenido Digital y Descargas')">💻 Libros Digitales</button></li>
+      <li><button onclick="alert('Área: Reproductor de Audiolibros')">🎧 Audiolibros</button></li>
+      <li><button onclick="alert('Proceso 3.0: Gestión de Editorial')">🏢 Gestión de Editorial</button></li>
+      <li><button onclick="alert('Proceso 5.0: Gestión Administrativa (Altas, Bajas y Modificaciones)')">⚙️ Panel Administrativo</button></li>
+      <li style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px;">
+        <button onclick="navigateTo('login-view')" style="color: #e74c3c;">🚪 Cerrar Sesión</button>
+      </li>
+    </ul>
+  </aside>
 
   <div class="app-container">
 
@@ -465,37 +716,32 @@
         <span style="color: #1877F2; font-weight: bold;">f</span> Iniciar sesión con Facebook
       </button>
 
-      <div class="divider">
-        <span>O</span>
-      </div>
+      <div class="divider"><span>O</span></div>
 
       <form onsubmit="event.preventDefault(); loginSuccess();">
         <input type="text" class="input-pill" placeholder="Correo electrónico o nombre de usuario" required />
-        
         <div class="password-container">
           <input type="password" id="password-input" class="input-pill" placeholder="Contraseña" required />
           <span class="toggle-password" onclick="togglePasswordVisibility()">👁️</span>
         </div>
-
-        <button type="submit" class="btn-pill" style="margin-top: 10px;">Iniciar sesión</button>
+        <button type="submit" class="btn-pill" style="margin-top: 5px;">Iniciar sesión</button>
       </form>
 
       <div class="login-footer">
-        <a href="#">¿Olvidaste tu contraseña?</a>
-        <a href="#">¿Aún no tienes cuenta? Regístrate</a>
+        <a href="#" onclick="alert('Se envió un enlace de recuperación a tu correo.')">¿Olvidaste tu contraseña?</a>
+        <a href="#" onclick="alert('Pantalla de registro en desarrollo.')">¿Aún no tienes cuenta? Regístrate</a>
       </div>
     </div>
 
 
     <!-- ==========================================
-         VISTA 2: MENÚ PRINCIPAL (DASHBOARD)
+         VISTA 2: MENÚ PRINCIPAL / DASHBOARD
          ========================================== -->
     <div id="main-view" class="view">
-      <!-- Header -->
       <header class="app-header">
         <div class="header-icons">
-          <button class="icon-btn">☰</button>
-          <button class="icon-btn">👤</button>
+          <button class="icon-btn" onclick="toggleMenu(true)" title="Menú">☰</button>
+          <button class="icon-btn" onclick="navigateTo('profile-view')" title="Ver Perfil">👤</button>
         </div>
         <div class="search-bar">
           <span class="search-icon">🔍</span>
@@ -503,7 +749,6 @@
         </div>
       </header>
 
-      <!-- Logo Central -->
       <div class="logo-container">
         <div class="logo-img" onclick="navigateTo('main-view')">
           <span class="logo-title">BIBLIOTECA<br>Las Cumbres</span>
@@ -511,62 +756,80 @@
         </div>
       </div>
 
-      <!-- Secciones de Contenido -->
       <div class="dashboard-grid">
-        
         <!-- Recomendaciones -->
         <div>
           <h3 class="section-title">Recomendaciones</h3>
           <div class="books-row">
-            <div class="book-card" onclick="openBookDetail('Cumbres Borrascosas')">
-              <div class="book-cover" style="background-color: #8c7ae6; color: white;">Libro 1</div>
-              <div class="book-formats">Físico<br>Digital</div>
+            <div class="book-card" onclick="openBookDetail('cumbres borrascosas')">
+              <div class="book-cover" style="background-color: #8c7ae6;">Cumbres Borrascosas</div>
+              <div class="book-title-sub">Cumbres B.</div>
+              <div class="book-formats">Físico | Digital</div>
             </div>
-            <div class="book-card" onclick="openBookDetail('El Principito')">
-              <div class="book-cover" style="background-color: #fbc531;">Libro 2</div>
+            <div class="book-card" onclick="openBookDetail('el principito')">
+              <div class="book-cover" style="background-color: #f1c40f; color: #333;">El Principito</div>
+              <div class="book-title-sub">El Principito</div>
               <div class="book-formats">Físico</div>
             </div>
-            <div class="book-card" onclick="openBookDetail('Don Quijote')">
-              <div class="book-cover" style="background-color: #487eb0; color: white;">Libro 3</div>
-              <div class="book-formats">Audio libro<br>Digital</div>
+            <div class="book-card" onclick="openBookDetail('cien años de soledad')">
+              <div class="book-cover" style="background-color: #e67e22;">Cien años de soledad</div>
+              <div class="book-title-sub">Cien Años...</div>
+              <div class="book-formats">Audio | Digital</div>
             </div>
           </div>
         </div>
 
-        <!-- Continuar Leyendo / Escuchando -->
+        <!-- Pestaña Interactiva: Seguir leyendo / Seguir escuchando -->
         <div>
-          <div style="display: flex; gap: 20px;">
-            <h3 class="section-title">Seguir leyendo</h3>
-            <h3 class="section-title" style="opacity: 0.5;">Seguir escuchando</h3>
+          <div style="display: flex; gap: 15px;">
+            <h3 id="tab-reading" class="section-title" onclick="switchProgressTab('reading')">Seguir leyendo</h3>
+            <h3 id="tab-listening" class="section-title inactive-tab" onclick="switchProgressTab('listening')">Seguir escuchando</h3>
           </div>
-          <div class="books-row">
-            <div class="book-card" onclick="openBookDetail('Harry Potter')">
-              <div class="book-cover" style="background-color: #2c3a47; color: white;">Harry Potter</div>
-              <div class="progress-bar-container">
-                <div class="progress-fill" style="width: 60%;"></div>
-              </div>
+          
+          <!-- Contenido: Lecturas en curso -->
+          <div id="reading-row" class="books-row">
+            <div class="book-card" onclick="openBookDetail('harry potter')">
+              <div class="book-cover" style="background-color: #2c3a47;">Harry Potter</div>
+              <div class="progress-bar-container"><div class="progress-fill" style="width: 65%;"></div></div>
             </div>
-            <div class="book-card" onclick="openBookDetail('Cumbres Borrascosas')">
-              <div class="book-cover" style="background-color: #8c7ae6; color: white;">Cumbres Borrascosas</div>
-              <div class="progress-bar-container">
-                <div class="progress-fill" style="width: 80%;"></div>
-              </div>
+            <div class="book-card" onclick="openBookDetail('1984')">
+              <div class="book-cover" style="background-color: #34495e;">1984</div>
+              <div class="progress-bar-container"><div class="progress-fill" style="width: 40%;"></div></div>
+            </div>
+          </div>
+
+          <!-- Contenido: Audiolibros en curso -->
+          <div id="listening-row" class="books-row" style="display: none;">
+            <div class="book-card" onclick="openBookDetail('don quijote')">
+              <div class="book-cover" style="background-color: #e74c3c;">🎧 Don Quijote</div>
+              <div class="progress-bar-container"><div class="progress-fill" style="width: 85%; background: #9b59b6;"></div></div>
+            </div>
+            <div class="book-card" onclick="openBookDetail('la felicidad')">
+              <div class="book-cover" style="background-color: #718093;">🎧 La Felicidad</div>
+              <div class="progress-bar-container"><div class="progress-fill" style="width: 20%; background: #9b59b6;"></div></div>
             </div>
           </div>
         </div>
 
-        <!-- Los más elegidos -->
+        <!-- Los más elegidos / Destacados -->
         <div style="grid-column: 1 / -1;">
           <h3 class="section-title">Los más elegidos</h3>
-          <div class="books-row" style="gap: 25px;">
-            <div class="book-card" onclick="openBookDetail('El Principito')">
-              <div class="book-cover" style="background-color: #27ae60; color: white;">El Principito</div>
+          <div class="books-row" style="gap: 20px;">
+            <div class="book-card" onclick="openBookDetail('ficciones')">
+              <div class="book-cover" style="background-color: #16a085;">Ficciones</div>
+              <div class="book-title-sub">J.L. Borges</div>
             </div>
-            <div class="book-card" onclick="openBookDetail('La Felicidad')">
-              <div class="book-cover" style="background-color: #dcdde1; color: #333;">La Felicidad - Rolón</div>
+            <div class="book-card" onclick="openBookDetail('orgullo y prejuicio')">
+              <div class="book-cover" style="background-color: #9b59b6;">Orgullo y Prejuicio</div>
+              <div class="book-title-sub">Jane Austen</div>
             </div>
-            <div class="book-card" onclick="openBookDetail('Don Quijote')">
-              <div class="book-cover" style="background-color: #e74c3c; color: white;">Don Quijote</div>
+            <div class="book-card" onclick="openBookDetail('cronica de una muerte anunciada')">
+              <div class="book-cover" style="background-color: #d35400;">Crónica de una muerte...</div>
+              <div class="book-title-sub">G. García Márquez</div>
+            </div>
+            <div class="book-card" onclick="openBookDetail('el principito')">
+              <div class="book-cover" style="background-color: #f1c40f; color: #333;">El Principito</div>
+              <div class="book-title-sub">Saint-Exupéry</div>
             </div>
           </div>
         </div>
@@ -579,36 +842,34 @@
          VISTA 3: DETALLE DE LIBRO
          ========================================== -->
     <div id="detail-view" class="view">
-      <!-- Header -->
       <header class="app-header">
+        <button class="icon-btn" onclick="navigateTo('main-view')">← Volver</button>
         <div class="search-bar">
           <span class="search-icon">🔍</span>
-          <input type="text" placeholder="Buscar libro" id="detail-search-input" onkeydown="handleSearch(event)" />
+          <input type="text" placeholder="Buscar libro..." onkeydown="handleSearch(event)" />
         </div>
-        <button class="icon-btn" onclick="navigateTo('main-view')" title="Volver al Menú">👤</button>
+        <button class="icon-btn" onclick="navigateTo('profile-view')">👤</button>
       </header>
 
       <div class="detail-container">
-        <!-- Portada -->
         <div class="detail-cover-container">
           <div class="detail-cover" id="detail-book-cover">
             <h2 id="detail-cover-title">Cumbres Borrascosas</h2>
-            <p id="detail-cover-author" style="margin-top: 10px; font-size: 14px;">Emily Brontë</p>
+            <p id="detail-cover-author" style="margin-top: 10px; font-size: 13px;">Emily Brontë</p>
           </div>
         </div>
 
-        <!-- Información -->
         <div class="detail-info">
           <h1 class="book-header-title" id="detail-title">Cumbres Borrascosas</h1>
           
-          <div class="author-info">
+          <div class="author-info-link" onclick="openAuthorFromDetail()">
             <div class="author-icon">👤</div>
-            <span id="detail-author">Emily Brontë</span>
+            <span id="detail-author" style="font-weight: 600;">Emily Brontë</span>
           </div>
 
           <div class="stats-row">
-            <div class="stat-item">👁️ <span>3.8M</span></div>
-            <div class="stat-item" style="color: red;">❤️ <span>208K</span></div>
+            <div>👁️ <span id="detail-views">3.8M</span></div>
+            <div style="color: #e74c3c;">❤️ <span id="detail-likes">208K</span></div>
           </div>
 
           <div class="synopsis-section">
@@ -619,22 +880,142 @@
           </div>
 
           <div class="actions-list">
-            <button class="action-btn" onclick="alert('Abriendo lector...')">
+            <button class="action-btn" onclick="startReadingCurrentBook()">
               📖 <strong>Leer</strong>
             </button>
-            <button class="action-btn" onclick="alert('Añadido a tu Biblioteca')">
+            <button class="action-btn" onclick="alert('¡Añadido a tu biblioteca personal!')">
               ➕ <strong>Biblioteca</strong>
             </button>
-            <button class="action-btn" onclick="alert('Solicitud de libro físico enviada')">
+            <button class="action-btn" onclick="alert('Solicitud enviada a la Biblioteca Física. Recibirás una notificación cuando esté listo para retirar.')">
               ➕ Físico
             </button>
-            <button class="action-btn" onclick="alert('Descargando versión Digital')">
+            <button class="action-btn" onclick="alert('Descargando archivo Digital (.EPUB / .PDF)...')">
               ➕ Digital
             </button>
-            <button class="action-btn" onclick="alert('Reproduciendo Audio libro')">
+            <button class="action-btn" onclick="alert('Iniciando reproducción de Audiolibro...')">
               ➕ Audio
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ==========================================
+         VISTA 4: LECTOR DE LIBRO (SUPUESTO LIBRO)
+         ========================================== -->
+    <div id="reader-view" class="view">
+      <div class="reader-header">
+        <button class="icon-btn" onclick="navigateTo('detail-view')">← Salir de lectura</button>
+        <h3 id="reader-book-title">Cumbres Borrascosas</h3>
+        <span>Capítulo 1</span>
+      </div>
+
+      <div class="reader-toolbar">
+        <label>Tamaño:</label>
+        <button class="btn-pill" style="width: auto; padding: 4px 12px;" onclick="changeFontSize(-2)">A-</button>
+        <button class="btn-pill" style="width: auto; padding: 4px 12px;" onclick="changeFontSize(2)">A+</button>
+
+        <label style="margin-left: 15px;">Tema:</label>
+        <button class="btn-pill" style="width: auto; padding: 4px 10px; background: #fff; color: #000;" onclick="setReaderTheme('white')">Claro</button>
+        <button class="btn-pill" style="width: auto; padding: 4px 10px; background: #fbf0d9; color: #5f4b32;" onclick="setReaderTheme('sepia')">Sepia</button>
+        <button class="btn-pill" style="width: auto; padding: 4px 10px; background: #222; color: #fff;" onclick="setReaderTheme('dark')">Noche</button>
+      </div>
+
+      <div class="reader-content theme-white" id="reader-text-container">
+        <h2>Capítulo I</h2>
+        <br>
+        <p>Acabo de regresar de una visita a mi casero, el único vecino con el que habré de tratar. Este lugar es ciertamente hermoso. En toda Inglaterra no creo que hubiera podido encontrar un rincón tan completamente alejado del bullicio social. Un verdadero paraíso para misántropos.</p>
+        <br>
+        <p>El señor Heathcliff y yo formamos una pareja harto singular para compartir un sitio así. Al acercarme a la puerta, noté que sus cejas se contraían de manera harto sospechosa, y sus ojos oscuros se ocultaban con recelo bajo sus pestañas...</p>
+        <br>
+        <p>—¿El señor Heathcliff? —pregunté.</p>
+        <p>Un asentimiento con la cabeza fue su única respuesta.</p>
+        <br>
+        <p>«Cumbres Borrascosas» es el nombre de la residencia de mi casero. «Borrascosas» es un adjetivo descriptivo de la turbulencia atmosférica a la que el lugar está expuesto en tiempo de tormenta. Tienen allí una ventilación pura y reconfortante en todo momento.</p>
+      </div>
+      
+      <div style="text-align: center; margin-top: 20px; font-size: 13px; color: #888;">
+        Página 1 de 240 • 0.5% completado
+      </div>
+    </div>
+
+
+    <!-- ==========================================
+         VISTA 5: PERFIL DE AUTOR
+         ========================================== -->
+    <div id="author-view" class="view">
+      <header class="app-header">
+        <button class="icon-btn" onclick="navigateTo('main-view')">← Volver al catálogo</button>
+        <button class="icon-btn" onclick="navigateTo('profile-view')">👤</button>
+      </header>
+
+      <div class="author-header-card">
+        <div class="author-avatar" id="author-avatar-initial">E</div>
+        <div>
+          <h2 id="author-name-title" style="font-size: 24px;">Emily Brontë</h2>
+          <p id="author-bio" style="color: #666; margin-top: 5px; font-size: 14px;">
+            Escritora y poetisa británica. Su obra más famosa es Cumbres Borrascosas, considerada un clásico de la literatura universal.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="section-title">Libros de este autor en la biblioteca</h3>
+      <div class="books-row" id="author-books-container" style="flex-wrap: wrap; overflow-x: visible;">
+        <!-- Se genera dinámicamente -->
+      </div>
+    </div>
+
+
+    <!-- ==========================================
+         VISTA 6: PERFIL DE USUARIO
+         ========================================== -->
+    <div id="profile-view" class="view">
+      <header class="app-header">
+        <button class="icon-btn" onclick="navigateTo('main-view')">← Volver al inicio</button>
+        <h3>Mi Perfil</h3>
+        <button class="icon-btn" onclick="navigateTo('login-view')" title="Cerrar sesión">🚪</button>
+      </header>
+
+      <div class="user-profile-card">
+        <div class="user-avatar-big">👤</div>
+        <h2>María González</h2>
+        <p style="opacity: 0.8; font-size: 14px;">maria.gonzalez@cumbres.edu.ar</p>
+        <p style="font-size: 12px; margin-top: 5px; background: rgba(255,255,255,0.2); display: inline-block; padding: 3px 12px; border-radius: 12px;">Socio N° 4092 • Lector Frecuente</p>
+      </div>
+
+      <div class="user-stats-grid">
+        <div class="stat-box">
+          <h4>14</h4>
+          <p>Libros Leídos</p>
+        </div>
+        <div class="stat-box">
+          <h4>2</h4>
+          <p>En Lectura</p>
+        </div>
+        <div class="stat-box">
+          <h4>1</h4>
+          <p>Préstamo Físico</p>
+        </div>
+        <div class="stat-box">
+          <h4>8</h4>
+          <p>Favoritos</p>
+        </div>
+      </div>
+
+      <h3 class="section-title">Mis Lecturas Recientes</h3>
+      <div class="books-row">
+        <div class="book-card" onclick="openBookDetail('harry potter')">
+          <div class="book-cover" style="background-color: #2c3a47;">Harry Potter</div>
+          <div class="book-title-sub">En curso</div>
+        </div>
+        <div class="book-card" onclick="openBookDetail('1984')">
+          <div class="book-cover" style="background-color: #34495e;">1984</div>
+          <div class="book-title-sub">En curso</div>
+        </div>
+        <div class="book-card" onclick="openBookDetail('el principito')">
+          <div class="book-cover" style="background-color: #f1c40f; color: #333;">El Principito</div>
+          <div class="book-title-sub">Completado</div>
         </div>
       </div>
     </div>
@@ -645,47 +1026,181 @@
        LÓGICA EN JAVASCRIPT
        ========================================== -->
   <script>
-    // Base de datos local simulada para la demostración
+    // Base de datos local ampliada con libros y autores reales
     const booksDatabase = {
       'cumbres borrascosas': {
         title: 'Cumbres Borrascosas',
         author: 'Emily Brontë',
         synopsis: 'Cuenta el amor obsesivo entre Catherine y Heathcliff, que al no poder estar juntos termina en venganza y tragedias que afectan a varias generaciones.',
-        color: '#8c7ae6'
+        color: '#8c7ae6',
+        views: '3.8M',
+        likes: '208K'
       },
       'el principito': {
         title: 'El Principito',
         author: 'Antoine de Saint-Exupéry',
-        synopsis: 'Un piloto se pierde en el desierto del Sahara y conoce a un pequeño príncipe de otro planeta que le enseña el valor de la amistad y del amor.',
-        color: '#27ae60'
+        synopsis: 'Un piloto se pierde en el desierto del Sahara y conoce a un pequeño príncipe de otro planeta que le enseña el valor de la amistad, el amor y la responsabilidad.',
+        color: '#f1c40f',
+        views: '5.2M',
+        likes: '410K'
       },
       'don quijote': {
         title: 'Don Quijote de la Mancha',
         author: 'Miguel de Cervantes',
-        synopsis: 'Las aventuras de un hidalgo pobre que de tanto leer novelas de caballería acaba enloqueciendo y creyéndose un caballero andante.',
-        color: '#e74c3c'
+        synopsis: 'Las divertidas e ingeniosas aventuras de un hidalgo pobre que de tanto leer novelas de caballería acaba creyéndose un caballero andante.',
+        color: '#e74c3c',
+        views: '2.1M',
+        likes: '150K'
       },
       'harry potter': {
         title: 'Harry Potter',
         author: 'J.K. Rowling',
         synopsis: 'Un niño huérfano descubre en su undécimo cumpleaños que es un mago y que asistirá al Colegio Hogwarts de Magia y Hechicería.',
-        color: '#2c3a47'
+        color: '#2c3a47',
+        views: '8.9M',
+        likes: '950K'
       },
       'la felicidad': {
         title: 'La Felicidad',
         author: 'Gabriel Rolón',
-        synopsis: 'Un viaje de reflexión hacia las emociones humanas, cuestionando la búsqueda ilusoria de la felicidad constante.',
-        color: '#718093'
+        synopsis: 'Un viaje de reflexión hacia las emociones humanas, cuestionando la búsqueda ilusoria e inalcanzable de la felicidad constante.',
+        color: '#718093',
+        views: '1.2M',
+        likes: '95K'
+      },
+      'cien años de soledad': {
+        title: 'Cien años de soledad',
+        author: 'Gabriel García Márquez',
+        synopsis: 'La saga de la familia Buendía en el pueblo ficticio de Macondo, una obra cumbre del realismo mágico hispanoamericano.',
+        color: '#e67e22',
+        views: '4.5M',
+        likes: '380K'
+      },
+      'cronica de una muerte anunciada': {
+        title: 'Crónica de una muerte anunciada',
+        author: 'Gabriel García Márquez',
+        synopsis: 'Una reconstrucción casi periodística del asesinato de Santiago Nasar a manos de los hermanos Vicario.',
+        color: '#d35400',
+        views: '2.8M',
+        likes: '210K'
+      },
+      '1984': {
+        title: '1984',
+        author: 'George Orwell',
+        synopsis: 'Una distopía clásica donde la sociedad está sometida a la vigilancia constante del Gran Hermano y al control de la verdad.',
+        color: '#34495e',
+        views: '6.1M',
+        likes: '510K'
+      },
+      'orgullo y prejuicio': {
+        title: 'Orgullo y Prejuicio',
+        author: 'Jane Austen',
+        synopsis: 'La historia de Elizabeth Bennet y Fitzwilliam Darcy, quienes deben superar sus propios prejuicios y orgullo para encontrar el verdadero amor.',
+        color: '#9b59b6',
+        views: '4.1M',
+        likes: '340K'
+      },
+      'ficciones': {
+        title: 'Ficciones',
+        author: 'Jorge Luis Borges',
+        synopsis: 'Una colección imprescindible de relatos laberínticos, laberintos de tiempo, espejos y bibliotecas infinitas.',
+        color: '#16a085',
+        views: '1.9M',
+        likes: '175K'
       }
     };
 
-    // Navegación entre vistas
+    // Base de datos de Autores
+    const authorsDatabase = {
+      'emily brontë': {
+        name: 'Emily Brontë',
+        bio: 'Escritora y poetisa británica. Su obra Cumbres Borrascosas es una de las novelas más célebres de la literatura inglesa.',
+        books: ['cumbres borrascosas']
+      },
+      'gabriel garcía márquez': {
+        name: 'Gabriel García Márquez',
+        bio: 'Escritor colombiano, Premio Nobel de Literatura en 1982. Padre del realismo mágico con obras reconocidas mundialmente.',
+        books: ['cien años de soledad', 'cronica de una muerte anunciada']
+      },
+      'antoine de saint-exupéry': {
+        name: 'Antoine de Saint-Exupéry',
+        bio: 'Aviador y escritor francés, autor del icónico libro El Principito.',
+        books: ['el principito']
+      },
+      'miguel de cervantes': {
+        name: 'Miguel de Cervantes',
+        bio: 'Novelista, poeta y dramaturgo español, considerado la máxima figura de la literatura española.',
+        books: ['don quijote']
+      },
+      'j.k. rowling': {
+        name: 'J.K. Rowling',
+        bio: 'Escritora y filántropa británica, famosa por ser la autora de la saga de Harry Potter.',
+        books: ['harry potter']
+      },
+       'gabriel rolón': {
+        name: 'Gabriel Rolón',
+        bio: 'Psicoanalista, escritor y ensayista argentino.',
+        books: ['la felicidad']
+      },
+      'george orwell': {
+        name: 'George Orwell',
+        bio: 'Novelista y periodista británico, célebre por sus novelas distópicas 1984 y Rebelión en la granja.',
+        books: ['1984']
+      },
+      'jane austen': {
+        name: 'Jane Austen',
+        bio: 'Novelista británica cuyas obras destacan por su ironía y aguda observación de la sociedad de su época.',
+        books: ['orgullo y prejuicio']
+      },
+      'jorge luis borges': {
+        name: 'Jorge Luis Borges',
+        bio: 'Escritor, poeta y ensayista argentino, considerado una de las grandes figuras de la literatura en español del siglo XX.',
+        books: ['ficciones']
+      }
+    };
+
+    let currentBookKey = 'cumbres borrascosas';
+    let currentReaderFontSize = 17;
+
+    // Navegación entre pantallas
     function navigateTo(viewId) {
-      document.querySelectorAll('.view').forEach(view => {
-        view.classList.remove('active');
-      });
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
       document.getElementById(viewId).classList.add('active');
+      toggleMenu(false);
       window.scrollTo(0, 0);
+    }
+
+    // Control del Menú Desplegable
+    function toggleMenu(show) {
+      const menu = document.getElementById('side-menu');
+      const overlay = document.getElementById('menu-overlay');
+      if (show) {
+        menu.classList.add('active');
+        overlay.classList.add('active');
+      } else {
+        menu.classList.remove('active');
+        overlay.classList.remove('active');
+      }
+    }
+
+    // Alternar entre "Seguir leyendo" y "Seguir escuchando"
+    function switchProgressTab(type) {
+      const tabReading = document.getElementById('tab-reading');
+      const tabListening = document.getElementById('tab-listening');
+      const rowReading = document.getElementById('reading-row');
+      const rowListening = document.getElementById('listening-row');
+
+      if (type === 'reading') {
+        tabReading.classList.remove('inactive-tab');
+        tabListening.classList.add('inactive-tab');
+        rowReading.style.display = 'flex';
+        rowListening.style.display = 'none';
+      } else {
+        tabListening.classList.remove('inactive-tab');
+        tabReading.classList.add('inactive-tab');
+        rowListening.style.display = 'flex';
+        rowReading.style.display = 'none';
+      }
     }
 
     // Login Simulado
@@ -693,30 +1208,31 @@
       navigateTo('main-view');
     }
 
-    // Ocultar/Mostrar Contraseña
+    // Toggle Mostrar Contraseña
     function togglePasswordVisibility() {
       const input = document.getElementById('password-input');
-      if (input.type === 'password') {
-        input.type = 'text';
-      } else {
-        input.type = 'password';
-      }
+      input.type = input.type === 'password' ? 'text' : 'password';
     }
 
-    // Abrir detalle del libro
+    // Abrir Detalle de Libro
     function openBookDetail(bookKey) {
       const key = bookKey.toLowerCase();
+      currentBookKey = key;
       const book = booksDatabase[key] || {
-        title: bookKey,
+        title: bookKey.charAt(0).toUpperCase() + bookKey.slice(1),
         author: 'Autor Desconocido',
         synopsis: 'Sinopsis no disponible para este ejemplar.',
-        color: '#4b6584'
+        color: '#34495e',
+        views: '100K',
+        likes: '10K'
       };
 
       document.getElementById('detail-title').innerText = book.title;
       document.getElementById('detail-author').innerText = book.author;
       document.getElementById('detail-synopsis').innerText = book.synopsis;
-      
+      document.getElementById('detail-views').innerText = book.views;
+      document.getElementById('detail-likes').innerText = book.likes;
+
       const cover = document.getElementById('detail-book-cover');
       cover.style.backgroundColor = book.color;
       document.getElementById('detail-cover-title').innerText = book.title;
@@ -725,7 +1241,74 @@
       navigateTo('detail-view');
     }
 
-    // Buscador
+    // Abrir Perfil de Autor desde el detalle del libro
+    function openAuthorFromDetail() {
+      const book = booksDatabase[currentBookKey];
+      if (book) {
+        openAuthorProfile(book.author);
+      }
+    }
+
+    // Abrir Pantalla de Autor con sus Libros
+    function openAuthorProfile(authorName) {
+      const key = authorName.toLowerCase();
+      const author = authorsDatabase[key] || {
+        name: authorName,
+        bio: 'Biografía del autor en proceso de actualización.',
+        books: []
+      };
+
+      document.getElementById('author-name-title').innerText = author.name;
+      document.getElementById('author-bio').innerText = author.bio;
+      document.getElementById('author-avatar-initial').innerText = author.name.charAt(0);
+
+      const booksContainer = document.getElementById('author-books-container');
+      booksContainer.innerHTML = '';
+
+      if (author.books.length === 0) {
+        booksContainer.innerHTML = '<p style="color: #666;">No hay otros libros registrados para este autor.</p>';
+      } else {
+        author.books.forEach(bKey => {
+          const bData = booksDatabase[bKey];
+          if (bData) {
+            const card = document.createElement('div');
+            card.className = 'book-card';
+            card.onclick = () => openBookDetail(bKey);
+            card.innerHTML = `
+              <div class="book-cover" style="background-color: ${bData.color}">${bData.title}</div>
+              <div class="book-title-sub">${bData.title}</div>
+            `;
+            booksContainer.appendChild(card);
+          }
+        });
+      }
+
+      navigateTo('author-view');
+    }
+
+    // Iniciar Lectura (Supuesto libro)
+    function startReadingCurrentBook() {
+      const book = booksDatabase[currentBookKey];
+      if (book) {
+        document.getElementById('reader-book-title').innerText = book.title;
+      }
+      navigateTo('reader-view');
+    }
+
+    // Funciones del Lector (Cambiar Fuente y Tema)
+    function changeFontSize(delta) {
+      currentReaderFontSize += delta;
+      if (currentReaderFontSize < 12) currentReaderFontSize = 12;
+      if (currentReaderFontSize > 28) currentReaderFontSize = 28;
+      document.getElementById('reader-text-container').style.fontSize = currentReaderFontSize + 'px';
+    }
+
+    function setReaderTheme(theme) {
+      const container = document.getElementById('reader-text-container');
+      container.className = 'reader-content theme-' + theme;
+    }
+
+    // Buscador interactivo
     function handleSearch(event) {
       if (event.key === 'Enter') {
         const query = event.target.value.trim().toLowerCase();
